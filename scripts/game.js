@@ -38,6 +38,7 @@ function generateWorld(height = 5, width = 5, random = false) {
 }
 
 function updateWorld(world = []) {
+    // The next generation of the current state
     let newWorld = []
 
     let topX = 0
@@ -117,6 +118,21 @@ function updateWorld(world = []) {
         // Now that we have the number of neighbors for a given cell,
         // we need to decide what happens with it
 
+        // Game's rules
+
+        // Creates a copy of the cell ...
+        let copyCell = Object.assign({}, world[i])
+
+        if (world[i].alive && aliveNeighbors != 2 && aliveNeighbors != 3) {
+            // ... it dies if there are not 2 or 3 neighbors ...
+            copyCell.alive = false
+        } else if (world[i].alive == false && aliveNeighbors == 3) {
+            // ... pops to life if there are 3 neighbors ...
+            copyCell.alive = true
+        }
+
+        // ... then, we push the copied cell to the new world
+        newWorld.push(copyCell)
     }
 
     return newWorld
