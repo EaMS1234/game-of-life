@@ -36,3 +36,88 @@ function generateWorld(height = 5, width = 5, random = false) {
 
     return world
 }
+
+function updateWorld(world = []) {
+    let newWorld = []
+
+    let topX = 0
+    let topY = 0
+
+    // Needed to get the maximum Y and X indexes
+    world.forEach(item => {
+        if (item.positionX > topX) {
+            topX = item.positionX
+        }
+
+        if (item.positionY > topY) {
+            topY = item.positionY
+        }
+    });
+
+    for (let i = 0; i < world.length; i++) {
+        // Total of alive neighbors for the current world[i] cell
+        let aliveNeighbors = 0
+
+        // Left neighbor
+        if (world[i].positionX > 0) {
+            if (world[i - 1].alive) {
+                aliveNeighbors += 1
+            }
+        }
+
+        // Right neighbor
+        if (world[i].positionX < topX) {
+            if (world[i + 1].alive) {
+                aliveNeighbors += 1
+            }
+        }
+
+        // Bottom neighbor
+        if (world[i].positionY > 0) {
+            if (world[i - topX - 1].alive) {
+                aliveNeighbors += 1
+            }
+        }
+
+        // Top neighbor
+        if (world[i].positionY < topY) {
+            if (world[i + topX + 1].alive) {
+                aliveNeighbors += 1
+            }
+        }
+
+        // Top left neighbor
+        if (world[i].positionY < topY && world[i].positionX > 0) {
+            if (world[i + topX].alive) {
+                aliveNeighbors += 1
+            }
+        }
+
+        // Top right neighbor
+        if (world[i].positionY < topY && world[i].positionX < topX) {
+            if (world[i + topX + 2].alive) {
+                aliveNeighbors += 1
+            }
+        }
+
+        // Bottom left neighbor
+        if (world[i].positionY > 0 && world[i].positionX > 0) {
+            if (world[i - topX - 2].alive) {
+                aliveNeighbors += 1
+            }
+        }
+
+        // Bottom right neighbor
+        if (world[i].positionY > 0 && world[i].positionX < topX) {
+            if (world[i - topX].alive) {
+                aliveNeighbors += 1
+            }
+        }
+    
+        // Now that we have the number of neighbors for a given cell,
+        // we need to decide what happens with it
+
+    }
+
+    return newWorld
+}
