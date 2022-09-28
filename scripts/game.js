@@ -19,9 +19,7 @@ function generateWorld(height = 5, width = 5, random = false) {
             // Randomizes the state of the cell if enabled
             // when calling the function
             if (random) {
-                let rand = Math.floor(Math.random * 2)
-
-                switch (rand) {
+                switch (Math.floor(Math.random() * 2)) {
                     case 0:
                         newCell.alive = false
                         break;
