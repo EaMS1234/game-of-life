@@ -1,0 +1,28 @@
+body {
+    /* Text settings */
+    font-family: sans-serif;
+    font-size: 16px;
+    text-align: center;
+
+    /* Color settings */
+    background-color: black;
+    color: white;
+}
+
+.game_container {
+    display: grid;
+    place-items: center;
+}
+
+.game_controls {
+    color: black;
+    background-color: white;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.foot {
+    padding: 16px;
+    height: 24px;
+    width: 24px;
+}
