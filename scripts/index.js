@@ -18,3 +18,17 @@ function playPause() {
         playPauseButton.innerText = 'Play'
     }
 }
+
+function main() {
+    // Configures the canvas
+    let width = Math.floor(window.innerWidth / 5) * 5 - 100
+    let height = Math.floor(window.innerHeight / 5) * 5 - 200
+
+    const canvas = document.getElementById('game_board')
+    canvas.setAttribute('width', `${width}`)
+    canvas.setAttribute('height', `${height}`)
+
+    const ctx = canvas.getContext('2d')
+}
+
+main()
