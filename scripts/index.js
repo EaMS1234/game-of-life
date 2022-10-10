@@ -26,6 +26,8 @@ function playPause() {
 function newGame(random = true) {
     // Re-generates a game
     game = generateWorld((height / 20), (width / 20), random)
+
+    console.log(game)
 }
 
 // Configures the page
@@ -41,6 +43,13 @@ window.onload = function () {
     const ctx = canvas.getContext('2d')
 
     for (let i = 0; i < game.length; i++) {
-        let currentCell = game[i];
+        let rectX = game[i].positionX * 20
+        let rectY = game[i].positionY * 20
+
+        ctx.strokeRect(rectX, rectY, 20, 20)
+
+        if (game[i].alive) {
+            ctx.fillRect(rectX, rectY, 20, 20)
+        }
     }
 }
