@@ -30,8 +30,8 @@ function updateCanvas() {
     ctx.clearRect(0, 0, height, width)
 
     game.forEach(cell => {
-        let rectX = cell.positionX * 20
-        let rectY = cell.positionY * 20
+        let rectX = cell.positionY * 20
+        let rectY = cell.positionX * 20
 
         ctx.strokeRect(rectX, rectY, 20, 20)
 
