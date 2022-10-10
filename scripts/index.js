@@ -11,6 +11,9 @@ const playPauseButton = document.getElementById('play_pause_button')
 const generateButton = document.getElementById('generate_new_game')
 const generationsPersec = document.getElementById('generations_per_sec')
 
+const canvas = document.getElementById('game_board')
+const ctx = canvas.getContext('2d')
+
 // "Play/pause" button handler
 function playPause() {
     playing = !playing
@@ -22,34 +25,37 @@ function playPause() {
     }
 }
 
+function updateCanvas() {
+    // Clears the canvas
+    ctx.clearRect(0, 0, height, width)
+
+    game.forEach(cell => {
+        let rectX = cell.positionX * 20
+        let rectY = cell.positionY * 20
+
+        ctx.strokeRect(rectX, rectY, 20, 20)
+
+        if (cell.alive) {
+            ctx.fillRect(rectX, rectY, 20, 20)
+        }
+    });
+}
+
 // "Generate" button handler
 function newGame(random = true) {
     // Re-generates a game
     game = generateWorld((height / 20), (width / 20), random)
 
+    updateCanvas()
     console.log(game)
 }
 
 // Configures the page
 window.onload = function () {
-    // Generates a new game
-    newGame()
-
     // Configures the canvas
-    const canvas = document.getElementById('game_board')
     canvas.setAttribute('width', `${width}`)
     canvas.setAttribute('height', `${height}`)
 
-    const ctx = canvas.getContext('2d')
-
-    for (let i = 0; i < game.length; i++) {
-        let rectX = game[i].positionX * 20
-        let rectY = game[i].positionY * 20
-
-        ctx.strokeRect(rectX, rectY, 20, 20)
-
-        if (game[i].alive) {
-            ctx.fillRect(rectX, rectY, 20, 20)
-        }
-    }
+    // Generates a new game
+    newGame()
 }
