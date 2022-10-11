@@ -25,6 +25,8 @@ function playPause() {
     } else {
         playPauseButton.innerText = 'Play'
     }
+
+    gameLoop()
 }
 
 function updateCanvas() {
@@ -77,6 +79,14 @@ function updateSpeed() {
     speed = generationsPersec.value / 10
 
     generationsPersecLabel.innerText = `${speed} Generations per second`
+}
+
+async function gameLoop() {
+    while (playing) {
+        console.log('Loop Start!')
+        await new Promise(r => setTimeout(r, (speed ** -1) * 1000))
+        console.log('Loop Finished!')
+    }
 }
 
 // Configures the page
