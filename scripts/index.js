@@ -27,7 +27,7 @@ function playPause() {
 
 function updateCanvas() {
     // Clears the canvas
-    ctx.clearRect(0, 0, height, width)
+    ctx.clearRect(0, 0, width, height)
 
     game.forEach(cell => {
         let rectX = cell.positionY * 20
