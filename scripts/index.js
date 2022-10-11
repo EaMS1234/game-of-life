@@ -50,6 +50,26 @@ function newGame(random = true) {
     console.log(game)
 }
 
+// "Click over canvas" handler
+canvas.onclick = function (evt) {
+    // Get the origin of the canvas element
+    let origin = canvas.getBoundingClientRect()
+
+    // Gets the position of the mouse relative to the canvas origin. X and Y
+    // need to be swapped to work correctly with the "game.js"'s functions.
+    let cellY = Math.floor((evt.clientX - origin.left) / 20)
+    let cellX = Math.floor((evt.clientY - origin.top) / 20)
+
+    // Get cell with that specific position
+    let targetCell = game.find(
+        target => target.positionX == cellX && target.positionY == cellY
+    )
+
+    targetCell.alive = !targetCell.alive
+
+    updateCanvas()
+}
+
 // Configures the page
 window.onload = function () {
     // Configures the canvas
