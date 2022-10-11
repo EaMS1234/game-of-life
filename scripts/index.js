@@ -5,11 +5,13 @@ var playing = false
 var width = Math.floor(window.innerWidth / 20) * 20 - 100
 var height = Math.floor(window.innerHeight / 20) * 20 - 200
 var game = {}
+var speed = 10
 
 // HTML's elements
 const playPauseButton = document.getElementById('play_pause_button')
 const generateButton = document.getElementById('generate_new_game')
 const generationsPersec = document.getElementById('generations_per_sec')
+const generationsPersecLabel = document.getElementById('gen_per_sec_label')
 
 const canvas = document.getElementById('game_board')
 const ctx = canvas.getContext('2d')
@@ -70,6 +72,13 @@ canvas.onclick = function (evt) {
     updateCanvas()
 }
 
+// "Generation per second" handler
+function updateSpeed() {
+    speed = generationsPersec.value / 10
+
+    generationsPersecLabel.innerText = `${speed} Generations per second`
+}
+
 // Configures the page
 window.onload = function () {
     // Configures the canvas
@@ -78,4 +87,7 @@ window.onload = function () {
 
     // Generates a new game
     newGame()
+
+    // Sets the speed
+    updateSpeed()
 }
