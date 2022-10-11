@@ -81,11 +81,15 @@ function updateSpeed() {
     generationsPersecLabel.innerText = `${speed} Generations per second`
 }
 
+// Runs the game itself
 async function gameLoop() {
     while (playing) {
-        console.log('Loop Start!')
+        // Updates the game and board
+        game = updateWorld(game)
+        updateCanvas()
+
+        // Allows the user to decide the simulation speed
         await new Promise(r => setTimeout(r, (speed ** -1) * 1000))
-        console.log('Loop Finished!')
     }
 }
 
