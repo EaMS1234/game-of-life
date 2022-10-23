@@ -89,7 +89,7 @@ async function gameLoop() {
         updateCanvas()
 
         // Allows the user to decide the simulation speed
-        await new Promise(r => setTimeout(r, (speed ** -1) * 1000))
+        await new Promise(r => setTimeout(r, 1000 / speed))
     }
 }
 
