@@ -60,59 +60,43 @@ function updateWorld(world = []) {
         let aliveNeighbors = 0
 
         // Left neighbor
-        if (world[i].positionX > 0) {
-            if (world[i - 1].alive) {
-                aliveNeighbors += 1
-            }
+        if (world[i].positionX > 0 && world[i - 1].alive) {
+            aliveNeighbors += 1
         }
 
         // Right neighbor
-        if (world[i].positionX < topX) {
-            if (world[i + 1].alive) {
-                aliveNeighbors += 1
-            }
+        if (world[i].positionX < topX && world[i + 1].alive) {
+            aliveNeighbors += 1
         }
 
         // Bottom neighbor
-        if (world[i].positionY > 0) {
-            if (world[i - topX - 1].alive) {
-                aliveNeighbors += 1
-            }
+        if (world[i].positionY > 0 && world[i - topX - 1].alive) {
+            aliveNeighbors += 1
         }
 
         // Top neighbor
-        if (world[i].positionY < topY) {
-            if (world[i + topX + 1].alive) {
-                aliveNeighbors += 1
-            }
+        if (world[i].positionY < topY && world[i + topX + 1].alive) {
+            aliveNeighbors += 1
         }
 
         // Top left neighbor
-        if (world[i].positionY < topY && world[i].positionX > 0) {
-            if (world[i + topX].alive) {
-                aliveNeighbors += 1
-            }
+        if (world[i].positionY < topY && world[i].positionX > 0 && world[i + topX].alive) {
+            aliveNeighbors += 1
         }
 
         // Top right neighbor
-        if (world[i].positionY < topY && world[i].positionX < topX) {
-            if (world[i + topX + 2].alive) {
-                aliveNeighbors += 1
-            }
+        if (world[i].positionY < topY && world[i].positionX < topX && world[i + topX + 2].alive) {
+            aliveNeighbors += 1
         }
 
         // Bottom left neighbor
-        if (world[i].positionY > 0 && world[i].positionX > 0) {
-            if (world[i - topX - 2].alive) {
-                aliveNeighbors += 1
-            }
+        if (world[i].positionY > 0 && world[i].positionX > 0 && world[i - topX - 2].alive) {
+            aliveNeighbors += 1
         }
 
         // Bottom right neighbor
-        if (world[i].positionY > 0 && world[i].positionX < topX) {
-            if (world[i - topX].alive) {
-                aliveNeighbors += 1
-            }
+        if (world[i].positionY > 0 && world[i].positionX < topX && world[i - topX].alive) {
+            aliveNeighbors += 1
         }
     
         // Now that we have the number of neighbors for a given cell,
